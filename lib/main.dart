@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:qr_wallet_front_end/ui/pages/pages.dart';
+import 'package:qr_wallet_front_end/ui/routes/routes.dart';
 
 void main() => runApp(const MyApp());
 
@@ -9,14 +11,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Material App',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      builder: (context, child) {
+        return MediaQuery(
+            data: MediaQuery.of(context).copyWith(
+                textScaleFactor:
+                    MediaQuery.of(context).textScaleFactor.clamp(0.9, 1.4)),
+            child: child!);
+      },
+      onGenerateRoute: CustomRoute.route,
+      home: const SplashPage(),
     );
   }
 }

@@ -26,6 +26,16 @@ class CustomRoute {
             builder: (BuildContext context) => const CategoryPage(),
             settings: settings);
 
+      case RouteNames.opinion:
+        return CustomMaterialPageRoute(
+            builder: (BuildContext builder) => const OpinionPage(),
+            settings: settings);
+
+      case RouteNames.settings:
+        return CustomMaterialPageRoute(
+            builder: (BuildContext context) => const SettingsPage(),
+            settings: settings);
+
       default:
         return CustomMaterialPageRoute(
             builder: (BuildContext context) => const Scaffold(),

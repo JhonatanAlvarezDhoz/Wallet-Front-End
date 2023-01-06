@@ -19,7 +19,7 @@ class CustomAd extends StatelessWidget {
             child: Container(
               height: responsive.hp(16),
               width: responsive.wp(100),
-              color: WalletColors.white,
+              color: Color.fromARGB(255, 250, 250, 250),
             ),
           ),
           Positioned(

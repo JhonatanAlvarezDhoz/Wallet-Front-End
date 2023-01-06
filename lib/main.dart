@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
             child: child!);
       },
       onGenerateRoute: CustomRoute.route,
-      home: const CategoryPage(),
+      home: const SettingsPage(),
     );
   }
 }

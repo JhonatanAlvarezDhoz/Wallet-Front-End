@@ -8,6 +8,7 @@ class BasePage extends StatelessWidget {
   final String title;
   final bool? leading;
   final bool? iconadd;
+  final Color? color;
 
   const BasePage({
     Key? key,
@@ -15,12 +16,14 @@ class BasePage extends StatelessWidget {
     required this.title,
     this.leading = true,
     this.iconadd = false,
+    this.color = const Color.fromARGB(255, 250, 250, 250),
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
     return Scaffold(
+        backgroundColor: color,
         appBar: AppBar(
           title: CustomText(text: title),
           elevation: 5,

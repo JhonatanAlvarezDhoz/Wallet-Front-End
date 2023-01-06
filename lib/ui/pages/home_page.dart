@@ -1,23 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:qr_wallet_front_end/ui/widgets/widgets.dart';
+import 'package:qr_wallet_front_end/utils/utils.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final Responsive responsive = Responsive.of(context);
     return BasePage(
       leading: false,
       widget: Stack(
         children: [
           ListView.builder(
-            itemCount: 10,
-            itemBuilder: (context, index) => GestureDetector(
-              onTap: () {
-                print('Navigate value');
-              },
-              child: const CustomCardRecord(),
-            ),
+            itemCount: 5 + 1,
+            itemBuilder: (context, index) => index == 5
+                ? SizedBox(
+                    height: responsive.hp(17),
+                    width: responsive.wp(100),
+                  )
+                : GestureDetector(
+                    onTap: () {
+                      print('Navigate value');
+                    },
+                    child: const CustomCardRecord(),
+                  ),
           ),
           const Positioned(bottom: 0, child: CustomAd())
         ],

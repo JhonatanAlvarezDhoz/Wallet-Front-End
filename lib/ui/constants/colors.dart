@@ -10,4 +10,6 @@ class WalletColors {
   static const Color weakPurple = Color(0xffbbbeef);
 
   static const Color green = Color(0xff79bc56);
+  static const Color gray = Color(0xffD9D9D9);
+  static const Color white = Color(0xffFFFFFF);
 }

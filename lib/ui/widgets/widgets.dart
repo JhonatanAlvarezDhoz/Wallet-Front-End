@@ -1,3 +1,4 @@
+export 'package:qr_wallet_front_end/ui/widgets/custom_modal/custom_record_modal.dart';
 export 'package:qr_wallet_front_end/ui/widgets/custom_cards/custom_card_opinion.dart';
 export 'package:qr_wallet_front_end/ui/widgets/custom_cards/custom_card_category.dart';
 export 'package:qr_wallet_front_end/ui/widgets/custom_ad.dart';

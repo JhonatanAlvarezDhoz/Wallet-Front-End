@@ -10,8 +10,9 @@ class CategoryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
-    return BasePage(
-      widget: Stack(
+    return SizedBox(
+      height: responsive.hp(100),
+      child: Stack(
         children: [
           ListView.builder(
             itemCount: 5 + 1,
@@ -33,9 +34,6 @@ class CategoryPage extends StatelessWidget {
           Column()
         ],
       ),
-      title: 'Categories',
-      iconadd: true,
-      leading: true,
     );
   }
 }

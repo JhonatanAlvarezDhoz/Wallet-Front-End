@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:qr_wallet_front_end/ui/constants/colors.dart';
+import 'package:qr_wallet_front_end/ui/constants/constants.dart';
+import 'package:qr_wallet_front_end/ui/pages/pages.dart';
 import 'package:qr_wallet_front_end/ui/widgets/widgets.dart';
 import 'package:qr_wallet_front_end/utils/responsive.dart';
 
-class BasePage extends StatelessWidget {
+class BasePage extends StatefulWidget {
   final Widget widget;
   final String title;
   final bool? leading;
@@ -20,60 +21,110 @@ class BasePage extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<BasePage> createState() => _BasePageState();
+}
+
+class _BasePageState extends State<BasePage> {
+  static final PageController pageController = PageController();
+  int curretTitleIndex = 0;
+  String currentTitle = 'Hola Mundo';
+  bool currentLeading = true;
+  bool currentIconAdd = false;
+
+  final List<Widget> pages = const [
+    HomePage(),
+    CategoryPage(),
+    OpinionPage(),
+    SettingsPage()
+  ];
+
+  @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
+
+    switch (curretTitleIndex) {
+      case 0:
+        currentTitle = 'Home';
+        currentLeading = false;
+        currentIconAdd = false;
+        break;
+
+      case 1:
+        currentTitle = 'Categories';
+        currentLeading = true;
+        currentIconAdd = true;
+        break;
+
+      case 2:
+        currentTitle = 'Opinons';
+        currentLeading = true;
+        currentIconAdd = true;
+        break;
+
+      case 3:
+        currentTitle = 'Settings';
+        currentLeading = true;
+        currentIconAdd = false;
+        break;
+      default:
+    }
     return Scaffold(
-        backgroundColor: color,
-        appBar: AppBar(
-          title: CustomText(text: title),
-          elevation: 5,
-          centerTitle: true,
-          shadowColor: WalletColors.softPurple,
-          backgroundColor: WalletColors.deepPurple,
-          leading: _BcakButtom(
-            leading: leading!,
-          ),
-          actions: [
-            Container(
-              margin: const EdgeInsets.only(right: 15),
-              child: _IconAdd(
-                responsive: responsive,
-                iconAdd: iconadd!,
-              ),
-            )
-          ],
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: CustomText(text: currentTitle),
+        elevation: 5,
+        centerTitle: true,
+        shadowColor: WalletColors.softPurple,
+        backgroundColor: WalletColors.deepPurple,
+        leading: _BcakButtom(
+          leading: currentLeading,
         ),
-        body: Center(
-          child: widget,
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-        floatingActionButton: SizedBox(
-          height: 70,
-          width: 70,
-          child: FittedBox(
-            child: Container(
-              padding: const EdgeInsets.all(4),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                color: Colors.white,
-              ),
-              child: FloatingActionButton(
-                  onPressed: () {},
-                  elevation: 0,
-                  highlightElevation: 0,
-                  backgroundColor: WalletColors.deepPurple,
-                  child: Icon(
-                    Icons.qr_code_scanner_rounded,
-                    size: responsive.dp(3.4),
-                  )),
+        actions: [
+          Container(
+            margin: const EdgeInsets.only(right: 15),
+            child: _IconAdd(
+              responsive: responsive,
+              iconAdd: currentIconAdd,
             ),
+          )
+        ],
+      ),
+      body: PageView(
+        controller: pageController,
+        children: pages,
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: SizedBox(
+        height: 70,
+        width: 70,
+        child: FittedBox(
+          child: Container(
+            padding: const EdgeInsets.all(4),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: Colors.white,
+            ),
+            child: FloatingActionButton(
+                onPressed: () {},
+                elevation: 0,
+                highlightElevation: 0,
+                backgroundColor: WalletColors.deepPurple,
+                child: Icon(
+                  Icons.qr_code_scanner_rounded,
+                  size: responsive.dp(3.4),
+                )),
           ),
         ),
-        bottomNavigationBar: CustomBottomNavigationBar(
-          onChange: (int value) {
-            print(value);
-          },
-        ));
+      ),
+      bottomNavigationBar: CustomBottomNavigationBar(
+        onChange: (int value) {
+          pageController.jumpToPage(value);
+          setState(() {
+            curretTitleIndex = value;
+          });
+        },
+      ),
+    );
   }
 }
 

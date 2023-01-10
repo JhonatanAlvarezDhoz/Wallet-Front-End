@@ -10,104 +10,116 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
 
-    return BasePage(
-        color: WalletColors.white,
-        widget: SizedBox(
-          child: Column(
-            children: [
-              _Banner(responsive: responsive),
-              gapH16,
-              Container(
-                width: responsive.wp(89),
-                child: const CustomText(
-                  text: 'General',
-                  color: Colors.black54,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: .7,
-                ),
-              ),
-              const Divider(),
-              Expanded(
-                child: ListView(
-                  children: [
-                    ListTile(
-                      title: const CustomText(text: 'Account'),
-                      iconColor: WalletColors.deepPurple,
-                      trailing: const Icon(
-                        Icons.arrow_forward_ios_rounded,
-                      ),
-                      leading: Icon(
-                        Icons.account_circle_rounded,
-                        size: responsive.dp(3.5),
-                      ),
-                      onTap: () {},
-                    ),
-                    ListTile(
-                      title: const CustomText(text: 'My Opinions'),
-                      iconColor: WalletColors.deepPurple,
-                      trailing: const Icon(Icons.arrow_forward_ios_rounded),
-                      leading: Icon(
-                        Icons.message_rounded,
-                        size: responsive.dp(3.5),
-                      ),
-                      onTap: () {},
-                    ),
-                    ListTile(
-                      title: const CustomText(text: 'Logout'),
-                      iconColor: WalletColors.deepPurple,
-                      trailing: const Icon(Icons.arrow_forward_ios_rounded),
-                      leading: Icon(
-                        Icons.logout_rounded,
-                        size: responsive.dp(3.5),
-                      ),
-                      onTap: () {},
-                    ),
-                    ListTile(
-                      title: const CustomText(text: 'Delete account'),
-                      iconColor: WalletColors.deepPurple,
-                      trailing: const Icon(Icons.arrow_forward_ios_rounded),
-                      leading: Icon(
-                        Icons.delete,
-                        size: responsive.dp(3.5),
-                      ),
-                      onTap: () {},
-                    ),
-                    const ListTile(
-                      title: CustomText(
-                        text: 'Feedback',
-                        color: Colors.black54,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: .7,
-                      ),
-                    ),
-                    const Divider(),
-                    ListTile(
-                      title: const CustomText(text: 'Report a bug'),
-                      iconColor: WalletColors.deepPurple,
-                      trailing: const Icon(Icons.arrow_forward_ios_rounded),
-                      leading: Icon(
-                        Icons.warning,
-                        size: responsive.dp(3.5),
-                      ),
-                      onTap: () {},
-                    ),
-                    ListTile(
-                      title: const CustomText(text: 'Sugestion'),
-                      iconColor: WalletColors.deepPurple,
-                      trailing: const Icon(Icons.arrow_forward_ios_rounded),
-                      leading: Icon(
-                        Icons.note_alt,
-                        size: responsive.dp(3.5),
-                      ),
-                      onTap: () {},
-                    ),
-                  ],
-                ),
-              )
-            ],
+    return SizedBox(
+      height: responsive.hp(100),
+      child: Column(
+        children: [
+          _Banner(responsive: responsive),
+          gapH16,
+          SizedBox(
+            width: responsive.wp(89),
+            child: const CustomText(
+              text: 'General',
+              color: Colors.black54,
+              fontWeight: FontWeight.w600,
+              letterSpacing: .7,
+            ),
           ),
-        ),
-        title: 'Settings');
+          const Divider(),
+          _ItemSettings(responsive: responsive)
+        ],
+      ),
+    );
+  }
+}
+
+class _ItemSettings extends StatelessWidget {
+  const _ItemSettings({
+    Key? key,
+    required this.responsive,
+  }) : super(key: key);
+
+  final Responsive responsive;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: ListView(
+        children: [
+          ListTile(
+            title: const CustomText(text: 'Account'),
+            iconColor: WalletColors.deepPurple,
+            trailing: const Icon(
+              Icons.arrow_forward_ios_rounded,
+            ),
+            leading: Icon(
+              Icons.account_circle_rounded,
+              size: responsive.dp(3.5),
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const CustomText(text: 'My Opinions'),
+            iconColor: WalletColors.deepPurple,
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
+            leading: Icon(
+              Icons.message_rounded,
+              size: responsive.dp(3.5),
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const CustomText(text: 'Logout'),
+            iconColor: WalletColors.deepPurple,
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
+            leading: Icon(
+              Icons.logout_rounded,
+              size: responsive.dp(3.5),
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const CustomText(text: 'Delete account'),
+            iconColor: WalletColors.deepPurple,
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
+            leading: Icon(
+              Icons.delete,
+              size: responsive.dp(3.5),
+            ),
+            onTap: () {},
+          ),
+          const ListTile(
+            title: CustomText(
+              text: 'Feedback',
+              color: Colors.black54,
+              fontWeight: FontWeight.w600,
+              letterSpacing: .7,
+            ),
+          ),
+          const Divider(),
+          ListTile(
+            title: const CustomText(text: 'Report a bug'),
+            iconColor: WalletColors.deepPurple,
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
+            leading: Icon(
+              Icons.warning,
+              size: responsive.dp(3.5),
+            ),
+            onTap: () {},
+          ),
+          ListTile(
+            title: const CustomText(text: 'Sugestion'),
+            iconColor: WalletColors.deepPurple,
+            trailing: const Icon(Icons.arrow_forward_ios_rounded),
+            leading: Icon(
+              Icons.note_alt,
+              size: responsive.dp(3.5),
+            ),
+            onTap: () {},
+          ),
+        ],
+      ),
+    );
   }
 }
 

@@ -10,23 +10,23 @@ class OpinionPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
 
-    return Scaffold(
-        body: BasePage(
-            widget: Stack(
-              children: [
-                ListView.builder(
-                    itemCount: 5 + 1,
-                    itemBuilder: (context, index) => index == 5
-                        ? SizedBox(
-                            height: responsive.hp(16.6),
-                          )
-                        : GestureDetector(
-                            onTap: () {},
-                            child: const CustomCardOpinion(),
-                          )),
-                const Positioned(bottom: 0, child: CustomAd())
-              ],
-            ),
-            title: 'Opinions'));
+    return SizedBox(
+      height: responsive.hp(100),
+      child: Stack(
+        children: [
+          ListView.builder(
+              itemCount: 5 + 1,
+              itemBuilder: (context, index) => index == 5
+                  ? SizedBox(
+                      height: responsive.hp(16.6),
+                    )
+                  : GestureDetector(
+                      onTap: () {},
+                      child: const CustomCardOpinion(),
+                    )),
+          const Positioned(bottom: 0, child: CustomAd())
+        ],
+      ),
+    );
   }
 }

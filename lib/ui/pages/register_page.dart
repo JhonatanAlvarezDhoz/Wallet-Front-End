@@ -156,7 +156,9 @@ class _RegisterForm extends StatelessWidget {
                       fontSize: responsive.dp(1.4),
                     ),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
                         child: CustomText(
                           text: 'Log In',
                           fontSize: responsive.dp(1.7),

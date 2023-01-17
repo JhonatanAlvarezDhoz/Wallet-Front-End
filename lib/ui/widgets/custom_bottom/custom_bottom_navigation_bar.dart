@@ -39,16 +39,32 @@ class CustomBottomNavigationBar extends StatelessWidget {
               isSelected ? WalletColors.white : WalletColors.weakPurple;
           Widget widget = Expanded(
             child: GestureDetector(
-              onTap: !isSelected
-                  ? () {
+              onTap: isSelected
+                  ? null
+                  : () {
                       onChange(index);
                       controller.changeCurrentIndex(index);
-                    }
-                  : null,
-              child: Icon(
-                item.icon,
-                color: color,
-                size: iconSize,
+                    },
+              child: Container(
+                color: Colors.transparent,
+                child: TweenAnimationBuilder(
+                  key: Key(index.toString()),
+                  tween: Tween(begin: 0.0, end: isSelected ? 1.0 : 0.0),
+                  duration: const Duration(milliseconds: 250),
+                  builder: (context, value, child) {
+                    return Transform.translate(
+                      offset: Offset(0.0, -value * 5),
+                      child: Transform.scale(
+                        scale: isSelected ? (value * 0.2) + 1.0 : 1,
+                        child: Icon(
+                          item.icon,
+                          color: color,
+                          size: iconSize,
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
           );

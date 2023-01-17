@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:qr_wallet_front_end/ui/constants/constants.dart';
-import 'package:qr_wallet_front_end/ui/pages/pages.dart';
 import 'package:qr_wallet_front_end/ui/widgets/widgets.dart';
 
 class SplashPage extends StatefulWidget {
@@ -110,11 +109,12 @@ class _SplashPageState extends State<SplashPage>
                   widthFactor: 3,
                   heightFactor: 7.4,
                   child: TweenAnimationBuilder<double>(
-                    tween: Tween(begin: 0.0, end: 1.0),
-                    duration: const Duration(seconds: 4),
+                    tween: Tween(begin: 1.0, end: 0.0),
+                    duration: const Duration(seconds: 2),
                     builder: (context, value, child) {
-                      return Opacity(
-                        opacity: value,
+                      return Transform.translate(
+                        offset: Offset(0.0, -200 * value),
+                        transformHitTests: true,
                         child: Image.asset(
                             "assets/icons/qr-wallet-out-bacground.png"),
                       );
@@ -125,11 +125,11 @@ class _SplashPageState extends State<SplashPage>
                   top: 480,
                   left: 110,
                   child: TweenAnimationBuilder<double>(
-                    tween: Tween(begin: 0.0, end: 1.0),
-                    duration: const Duration(seconds: 4),
+                    tween: Tween(begin: 1.0, end: 0.0),
+                    duration: const Duration(seconds: 2),
                     builder: (context, value, child) {
-                      return Opacity(
-                        opacity: value,
+                      return Transform.translate(
+                        offset: Offset(0.0, -200 * value),
                         child: const CustomText(
                             text: "QR - Wallet",
                             fontSize: 30,

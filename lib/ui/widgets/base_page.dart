@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:qr_wallet_front_end/controllers/controllers.dart';
 import 'package:qr_wallet_front_end/ui/constants/constants.dart';
 import 'package:qr_wallet_front_end/ui/pages/pages.dart';
 import 'package:qr_wallet_front_end/ui/widgets/widgets.dart';
@@ -41,6 +43,7 @@ class _BasePageState extends State<BasePage> {
   @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
+    final BottomNavigationBarController controller = context.watch();
 
     switch (curretTitleIndex) {
       case 0:
@@ -90,6 +93,7 @@ class _BasePageState extends State<BasePage> {
         ],
       ),
       body: PageView(
+        onPageChanged: (value) => controller.changeCurrentIndex(value),
         controller: pageController,
         children: pages,
       ),

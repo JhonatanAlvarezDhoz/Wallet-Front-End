@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:qr_wallet_front_end/ui/constants/constants.dart';
+import 'package:qr_wallet_front_end/ui/routes/route.dart';
 import 'package:qr_wallet_front_end/ui/widgets/widgets.dart';
 import 'package:qr_wallet_front_end/utils/utils.dart';
 
@@ -133,7 +134,9 @@ class _LoginForm extends StatelessWidget {
                       fontSize: responsive.dp(1.4),
                     ),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.of(context).pushNamed(RouteNames.register);
+                        },
                         child: CustomText(
                           text: 'Register now!',
                           fontSize: responsive.dp(1.7),

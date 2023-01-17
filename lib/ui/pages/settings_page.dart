@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:qr_wallet_front_end/ui/constants/constants.dart';
+import 'package:qr_wallet_front_end/ui/pages/pages.dart';
+import 'package:qr_wallet_front_end/ui/routes/route.dart';
 import 'package:qr_wallet_front_end/ui/widgets/widgets.dart';
 import 'package:qr_wallet_front_end/utils/responsive.dart';
 
@@ -76,7 +78,9 @@ class _ItemSettings extends StatelessWidget {
               Icons.logout_rounded,
               size: responsive.dp(3.5),
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed(RouteNames.login);
+            },
           ),
           ListTile(
             title: const CustomText(text: 'Delete account'),

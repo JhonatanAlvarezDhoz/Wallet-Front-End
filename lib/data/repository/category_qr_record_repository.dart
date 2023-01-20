@@ -18,7 +18,7 @@ class CategoryQRrecordRepository extends Api {
 
   Future<http.Response> updateCatgoryQRrecord({
     required int idCategoryRecord,
-    required Map<String, String> body,
+    required Map<String, dynamic> body,
   }) async {
     final http.Response response =
         await put("/qr/update/qr_category/$idCategoryRecord", body);

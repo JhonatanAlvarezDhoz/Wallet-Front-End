@@ -7,22 +7,19 @@ import 'package:qr_wallet_front_end/models/models.dart';
 import 'package:qr_wallet_front_end/data/repository/repository.dart';
 import 'package:qr_wallet_front_end/data/use_case/base_use_case.dart';
 
-class CategoryQRrecodrUSeCase implements UseCaseNoParams {
-  CategoryQRrecordRepository categoryQRrecordRepository;
+class CreateOpinionUseCase implements UseCaseNoParams<ListOpinionModel> {
+  final OpinionRepository opinionRepository;
 
-  CategoryQRrecodrUSeCase({required this.categoryQRrecordRepository});
+  CreateOpinionUseCase({required this.opinionRepository});
   @override
-  Future call() async {
-    http.Response response =
-        await categoryQRrecordRepository.getCatgoryQRrecord();
+  Future<ListOpinionModel> call() async {
+    http.Response response = await opinionRepository.createOpinion();
 
     switch (response.statusCode) {
-      case 200:
-        CategoryQRrecordModel categoryQRrecordModel =
-            CategoryQRrecordModel.fromJson(
-                jsonDecode(utf8.decode(response.bodyBytes)));
-        return categoryQRrecordModel;
-
+      case 201:
+        ListOpinionModel listOpinionModel = ListOpinionModel.fromJson(
+            json.decode(utf8.decode(response.bodyBytes)));
+        return listOpinionModel;
       case 408:
         throw TimeoutException("");
       default:

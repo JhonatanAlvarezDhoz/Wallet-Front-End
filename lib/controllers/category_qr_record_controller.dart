@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:qr_wallet_front_end/data/use_case/category_qr_record_use_case.dart';
 import 'package:qr_wallet_front_end/models/models.dart';
+import 'package:qr_wallet_front_end/data/use_case/use_case.dart';
 
 class CategoryQRrecordController extends ChangeNotifier {
-  late CategoryQRrecodrUSeCase categoryQRrecodrUSeCase;
+  late GetCategoryQRrecodrUSeCase categoryQRrecodrUSeCase;
 
   CategoryQRrecordController({required this.categoryQRrecodrUSeCase});
 

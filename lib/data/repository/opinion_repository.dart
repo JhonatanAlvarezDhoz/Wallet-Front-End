@@ -10,14 +10,14 @@ class OpinionRepository extends Api {
   Future<http.Response> createOpinion({
     String? title,
     String? text,
-    List<String>? opinion_category,
+    List<String>? opinionCategory,
     String? user,
   }) async {
     final Map<String, dynamic> body = {
       'title': title,
-      'body': text,
+      'text': text,
       'opinion_category':
-          opinion_category!.map((e) => "\"$e\"").toList().toString(),
+          opinionCategory!.map((e) => "\"$e\"").toList().toString(),
     };
 
     final http.Response response = await post("/opinion/create/", body);

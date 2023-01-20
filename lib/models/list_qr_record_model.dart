@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final listQRrecordModel = listQRrecordModelFromMap(jsonString);
-
 import 'dart:convert';
 
 class ListQRrecordModel {

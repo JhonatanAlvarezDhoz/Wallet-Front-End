@@ -12,6 +12,7 @@ class CategeryOpinionController extends ChangeNotifier {
   Future<void> getListCategoryOpinion() async {
     try {
       categoryOpinionModel = await categoryOpinionUseCase.call();
+      notifyListeners();
     } catch (e) {
       rethrow;
     }

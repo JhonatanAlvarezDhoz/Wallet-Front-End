@@ -4,6 +4,7 @@ import 'package:qr_wallet_front_end/data/use_case/use_case.dart';
 
 class CategoryQRrecordController extends ChangeNotifier {
   late GetCategoryQRrecodrUSeCase categoryQRrecodrUSeCase;
+  CategoryQRrecord selectedQRCategory = CategoryQRrecord();
 
   CategoryQRrecordController({required this.categoryQRrecodrUSeCase});
 

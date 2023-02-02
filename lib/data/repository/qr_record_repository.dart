@@ -10,11 +10,13 @@ class QRrecordRepository extends Api {
 
   Future<http.Response> createQRrecord({
     String? name,
-    List<String>? qrCategory,
+    String? qrCategory,
+    String? value,
   }) async {
     final Map<String, dynamic> body = {
       'name': name,
-      'qr_category': qrCategory!.map((e) => "\"$e\"").toList().toString(),
+      'value': value,
+      'qr_category': qrCategory!,
     };
     final http.Response response = await post("/qr/create/qr_record/", body);
     return response;

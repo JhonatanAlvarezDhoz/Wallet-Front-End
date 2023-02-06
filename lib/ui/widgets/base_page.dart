@@ -88,6 +88,7 @@ class _BasePageState extends State<BasePage> {
             child: _IconAdd(
               responsive: responsive,
               iconAdd: currentIconAdd,
+              curretIndex: curretTitleIndex,
             ),
           )
         ],
@@ -109,7 +110,14 @@ class _BasePageState extends State<BasePage> {
               color: Colors.white,
             ),
             child: FloatingActionButton(
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) => const AlertDialog(
+                            backgroundColor: Colors.transparent,
+                            content: CustomRecordModal(),
+                          ));
+                },
                 elevation: 0,
                 highlightElevation: 0,
                 backgroundColor: WalletColors.deepPurple,
@@ -150,19 +158,46 @@ class _BcakButtom extends StatelessWidget {
 
 class _IconAdd extends StatelessWidget {
   final bool iconAdd;
-  const _IconAdd({
+  final int curretIndex;
+  _IconAdd({
     Key? key,
     required this.responsive,
     required this.iconAdd,
+    required this.curretIndex,
   }) : super(key: key);
 
   final Responsive responsive;
+
+  final List<String> itemCategory = <String>[
+    'Review',
+    'Comments',
+    'Suggestions',
+    'Bad Service',
+    'Complints',
+  ];
 
   @override
   Widget build(BuildContext context) {
     if (iconAdd) {
       return IconButton(
         onPressed: () {
+          switch (curretIndex) {
+            case 1:
+              showModalBottomSheet(
+                  backgroundColor: Colors.transparent,
+                  isScrollControlled: true,
+                  context: context,
+                  builder: (context) => const CustomCategoryModal());
+              break;
+            case 2:
+              showModalBottomSheet(
+                  backgroundColor: Colors.transparent,
+                  isScrollControlled: true,
+                  context: context,
+                  builder: (context) => CustomOpinionModal());
+              break;
+            default:
+          }
           print('Ad Category');
         },
         icon: Icon(

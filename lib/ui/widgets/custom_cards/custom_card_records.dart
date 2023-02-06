@@ -3,6 +3,8 @@ import 'package:qr_wallet_front_end/ui/constants/constants.dart';
 import 'package:qr_wallet_front_end/ui/widgets/widgets.dart';
 import 'package:qr_wallet_front_end/utils/utils.dart';
 
+enum SampleItem { edit, delete }
+
 class CustomCardRecord extends StatelessWidget {
   const CustomCardRecord({Key? key}) : super(key: key);
 
@@ -15,7 +17,7 @@ class CustomCardRecord extends StatelessWidget {
         left: responsive.wp(6),
         right: responsive.wp(6),
       ),
-      height: responsive.hp(10),
+      height: responsive.hp(11),
       width: responsive.wp(100),
       decoration: BoxDecoration(
         color: WalletColors.white,
@@ -47,21 +49,40 @@ class CustomCardRecord extends StatelessWidget {
                   maxLines: 1,
                 ),
               ),
-              IconButton(
-                onPressed: () {
-                  print('More');
+              PopupMenuButton(
+                onSelected: (value) {
+                  switch (value) {
+                    case SampleItem.edit:
+                      // Logica para editar
+                      print('edit');
+                      break;
+                    case SampleItem.delete:
+                      // TODO:  Logica para editar
+                      print('delete');
+                      break;
+                    default:
+                  }
                 },
-                icon: const Icon(Icons.more_vert_rounded),
+                itemBuilder: (context) => const [
+                  PopupMenuItem(
+                    value: SampleItem.edit,
+                    child: CustomText(text: 'edit'),
+                  ),
+                  PopupMenuItem(
+                      value: SampleItem.delete,
+                      child: CustomText(text: 'delete'))
+                ],
               )
             ],
           ),
           Container(
             margin: EdgeInsets.only(
-              left: responsive.dp(1.9),
+              left: responsive.dp(2),
+              bottom: responsive.hp(.2),
             ),
             child: CustomText(
               text: 'Value',
-              fontSize: responsive.dp(1.8),
+              fontSize: responsive.dp(1.6),
               fontWeight: FontWeight.w500,
               color: WalletColors.softPurple,
             ),

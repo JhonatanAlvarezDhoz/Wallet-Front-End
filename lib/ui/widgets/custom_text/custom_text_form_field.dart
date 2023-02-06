@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:qr_wallet_front_end/utils/utils.dart';
 
 class TextFormFieldWidget extends StatelessWidget {
-  final String? hintText;
+  final String? hintText, counterText;
   final bool obscureText, readOnly;
   final TextEditingController? controller;
   final IconData? suffixIcon;
@@ -33,6 +33,7 @@ class TextFormFieldWidget extends StatelessWidget {
 
   const TextFormFieldWidget({
     Key? key,
+    this.counterText,
     this.hintText,
     this.obscureText = false,
     this.readOnly = false,
@@ -95,7 +96,7 @@ class TextFormFieldWidget extends StatelessWidget {
           isCollapsed: true,
           contentPadding: padding ??
               const EdgeInsets.only(left: 10, right: 10, top: 0, bottom: 0),
-          counterText: "",
+          counterText: counterText,
           hintText: hintText,
           alignLabelWithHint: true,
           hintStyle: textStyle ??

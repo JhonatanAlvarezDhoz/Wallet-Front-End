@@ -18,7 +18,7 @@ class CustomRecordModal extends StatelessWidget {
     ];
     return Container(
       height: responsive.hp(43),
-      width: responsive.wp(80),
+      width: responsive.wp(85),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         color: WalletColors.white,
@@ -43,7 +43,9 @@ class CustomRecordModal extends StatelessWidget {
                     color: WalletColors.purple,
                     borderRadius: BorderRadius.circular(20)),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                   icon: const Icon(
                     Icons.close_rounded,
                     color: WalletColors.white,
@@ -53,7 +55,7 @@ class CustomRecordModal extends StatelessWidget {
             ],
           ),
           SizedBox(
-            width: responsive.wp(60),
+            width: responsive.wp(50),
             child: const CustomText(
               text: 'Name',
               color: Colors.black87,
@@ -62,14 +64,14 @@ class CustomRecordModal extends StatelessWidget {
           Container(
             margin: EdgeInsets.only(bottom: responsive.dp(1.8)),
             height: responsive.hp(5),
-            width: responsive.wp(70),
+            width: responsive.wp(59),
             child: const TextFormFieldWidget(
               fillColor: WalletColors.gray,
               maxLines: 1,
             ),
           ),
           SizedBox(
-            width: responsive.wp(60),
+            width: responsive.wp(50),
             child: const CustomText(
               text: 'Category',
               color: Colors.black87,
@@ -78,7 +80,7 @@ class CustomRecordModal extends StatelessWidget {
           Container(
               margin: EdgeInsets.only(bottom: responsive.dp(1.9)),
               height: responsive.hp(6.5),
-              width: responsive.wp(72),
+              width: responsive.wp(59),
               decoration: BoxDecoration(
                   color: WalletColors.gray,
                   borderRadius: BorderRadius.circular(20)),
@@ -112,7 +114,7 @@ class CustomRecordModal extends StatelessWidget {
           gapH20,
           SizedBox(
             height: responsive.hp(8),
-            width: responsive.wp(70),
+            width: responsive.wp(60),
             child: CustomButtom(
                 borderRadius: BorderRadius.circular(35),
                 child: CustomText(

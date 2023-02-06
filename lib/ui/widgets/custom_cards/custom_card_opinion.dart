@@ -59,7 +59,7 @@ class CustomCardOpinion extends StatelessWidget {
             ],
           ),
           gapH4,
-          Container(
+          SizedBox(
             height: 20,
             width: responsive.wp(67),
             child: CustomText(
@@ -71,11 +71,11 @@ class CustomCardOpinion extends StatelessWidget {
           ),
           gapH8,
           SizedBox(
-            height: responsive.wp(30),
+            height: responsive.wp(20),
             width: responsive.wp(66),
             child: CustomText(
               text:
-                  'Est aute duis elit duis mollit irure. Consequat duis dolor ex elit ipsum quis ipsum dolore. Est aute duis elit duis mollit irure. Consequat duis dolor ex elit ipsum quis ipsum dolore.',
+                  'Est aute duis elit duis mollit irure. Consequat duis dolor ex elit ipsum quis ipsum dolore. Est aute duis elit duis mollit irure. Consequat duis dolor ex elit ipsum quis ipsum dolore.  elit ipsum quis ipsum ',
               fontSize: responsive.dp(1.6),
               textAlign: TextAlign.justify,
               maxLines: 5,

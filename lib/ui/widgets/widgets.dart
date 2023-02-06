@@ -1,3 +1,4 @@
+export 'package:qr_wallet_front_end/ui/widgets/custom_modal/custom_category_modal.dart';
 export 'package:qr_wallet_front_end/ui/widgets/custom_modal/custom_record_modal.dart';
 export 'package:qr_wallet_front_end/ui/widgets/custom_cards/custom_card_opinion.dart';
 export 'package:qr_wallet_front_end/ui/widgets/custom_cards/custom_card_category.dart';
@@ -8,3 +9,4 @@ export 'package:qr_wallet_front_end/ui/widgets/custom_bottom/custom_buttom.dart'
 export 'package:qr_wallet_front_end/ui/widgets/custom_text/custom_text.dart';
 export 'package:qr_wallet_front_end/ui/widgets/custom_text/custom_text_form_field.dart';
 export 'package:qr_wallet_front_end/ui/widgets/base_page.dart';
+export 'package:qr_wallet_front_end/ui/widgets/custom_modal/custom_opinon_modal.dart';

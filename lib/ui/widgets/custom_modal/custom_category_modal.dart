@@ -9,71 +9,60 @@ class CustomCategoryModal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
-    return Container(
-      height: responsive.hp(30),
-      width: responsive.wp(80),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: WalletColors.white,
-        boxShadow: const [
-          BoxShadow(
-            color: Color.fromARGB(31, 135, 133, 133),
-            offset: Offset(0, 8),
-            blurRadius: 10,
-          )
-        ],
-      ),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+    return FractionallySizedBox(
+      heightFactor: .8,
+      child: Container(
+        width: responsive.wp(100),
+        decoration: const BoxDecoration(
+          color: WalletColors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
             children: [
-              Container(
-                margin: const EdgeInsets.only(top: 13, right: 13, bottom: 13),
-                height: responsive.hp(5),
-                width: responsive.wp(10.8),
-                decoration: BoxDecoration(
-                    color: WalletColors.purple,
-                    borderRadius: BorderRadius.circular(20)),
+              Align(
+                alignment: Alignment.topRight,
                 child: IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.close_rounded,
-                    color: WalletColors.white,
-                  ),
+                    color: Colors.black,
+                    onPressed: () => Navigator.of(context).pop(),
+                    icon: const Icon(Icons.close)),
+              ),
+              Container(
+                margin: EdgeInsets.only(left: responsive.wp(5)),
+                width: responsive.wp(75),
+                child: const CustomText(
+                  text: 'Category Name',
+                  color: Colors.black87,
                 ),
               ),
+              Container(
+                margin: EdgeInsets.only(bottom: responsive.dp(1.8)),
+                height: responsive.hp(6),
+                width: responsive.wp(75),
+                child: const TextFormFieldWidget(
+                  fillColor: WalletColors.gray,
+                  maxLines: 1,
+                ),
+              ),
+              gapH8,
+              SizedBox(
+                height: responsive.hp(8),
+                width: responsive.wp(75),
+                child: CustomButtom(
+                    borderRadius: BorderRadius.circular(35),
+                    child: CustomText(
+                      text: 'Create',
+                      fontSize: responsive.dp(3),
+                      fontWeight: FontWeight.w600,
+                      color: WalletColors.white,
+                    )),
+              )
             ],
           ),
-          SizedBox(
-            width: responsive.wp(60),
-            child: const CustomText(
-              text: 'Category Name',
-              color: Colors.black87,
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.only(bottom: responsive.dp(1.8)),
-            height: responsive.hp(5),
-            width: responsive.wp(70),
-            child: const TextFormFieldWidget(
-              fillColor: WalletColors.gray,
-              maxLines: 1,
-            ),
-          ),
-          SizedBox(
-            height: responsive.hp(8),
-            width: responsive.wp(70),
-            child: CustomButtom(
-                borderRadius: BorderRadius.circular(35),
-                child: CustomText(
-                  text: 'Create',
-                  fontSize: responsive.dp(3),
-                  fontWeight: FontWeight.w600,
-                  color: WalletColors.white,
-                )),
-          )
-        ],
+        ),
       ),
     );
   }

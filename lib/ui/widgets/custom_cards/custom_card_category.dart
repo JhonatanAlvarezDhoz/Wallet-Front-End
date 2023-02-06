@@ -51,11 +51,29 @@ class CustomCardCategory extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(
-                  onPressed: () {
-                    print('More');
+                PopupMenuButton(
+                  onSelected: (value) {
+                    switch (value) {
+                      case SampleItem.edit:
+                        // Logica para editar
+                        print('edit');
+                        break;
+                      case SampleItem.delete:
+                        // Logica para editar
+                        print('delete');
+                        break;
+                      default:
+                    }
                   },
-                  icon: const Icon(Icons.more_vert_rounded),
+                  itemBuilder: (context) => const [
+                    PopupMenuItem(
+                      value: SampleItem.edit,
+                      child: CustomText(text: 'edit'),
+                    ),
+                    PopupMenuItem(
+                        value: SampleItem.delete,
+                        child: CustomText(text: 'delete'))
+                  ],
                 ),
                 CustomText(
                   text: '5',

@@ -9,7 +9,8 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    const double heigth = 200;
+    final Responsive responsive = Responsive.of(context);
+    double heigth = responsive.hp(20);
     return Scaffold(
         backgroundColor: WalletColors.purple,
         body: Stack(
@@ -32,8 +33,8 @@ class RegisterPage extends StatelessWidget {
                 color: Colors.transparent,
                 child: Center(
                   child: Container(
-                    height: 130,
-                    width: 130,
+                    height: 100,
+                    width: 100,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(100),
                         color: Colors.white),
@@ -54,16 +55,15 @@ class RegisterPage extends StatelessWidget {
                   color: Colors.white,
                 ),
                 child: LayoutBuilder(builder: (context, constraints) {
-                  final heigth = constraints.maxHeight - 110;
+                  final heigth = constraints.maxHeight - responsive.hp(13);
                   return Column(
                     children: [
                       gapH32,
-                      const CustomText(
+                      CustomText(
                         text: 'Register',
-                        fontSize: 40,
+                        fontSize: responsive.dp(4.5),
                         fontWeight: FontWeight.w600,
                       ),
-                      gapH16,
                       _RegisterForm(
                         size: size,
                         heigth: heigth,
@@ -92,117 +92,117 @@ class _RegisterForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final Responsive responsive = Responsive.of(context);
     return Form(
-        child: SizedBox(
-      height: heigth,
-      width: size.width * .8,
-      child: Column(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(left: 14),
-                  child: const CustomText(
-                    text: 'Name',
-                    fontSize: 16,
-                    color: Colors.black54,
-                  ),
-                ),
-                const TextFormFieldWidget(
-                  fillColor: WalletColors.gray,
-                ),
-                gapH12,
-                Container(
-                  margin: const EdgeInsets.only(left: 14),
-                  child: const CustomText(
-                    text: 'email',
-                    fontSize: 16,
-                    color: Colors.black54,
-                  ),
-                ),
-                const TextFormFieldWidget(
-                  fillColor: WalletColors.gray,
-                ),
-                gapH12,
-                Container(
-                  margin: const EdgeInsets.only(left: 14),
-                  child: const CustomText(
-                    text: 'Phone',
-                    fontSize: 16,
-                    color: Colors.black54,
-                  ),
-                ),
-                const TextFormFieldWidget(
-                  fillColor: WalletColors.gray,
-                ),
-                gapH12,
-                Container(
-                  margin: const EdgeInsets.only(left: 14),
-                  child: const CustomText(
-                    text: 'Password',
-                    fontSize: 16,
-                    color: Colors.black54,
-                  ),
-                ),
-                const TextFormFieldWidget(
-                  fillColor: WalletColors.gray,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    CustomText(
-                      text: 'Already a Menber?',
-                      fontSize: responsive.dp(1.4),
+      child: SizedBox(
+        height: heigth,
+        width: size.width * .8,
+        child: Column(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(left: 14),
+                    child: const CustomText(
+                      text: 'Name',
+                      fontSize: 16,
+                      color: Colors.black54,
                     ),
-                    TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: CustomText(
-                          text: 'Log In',
-                          fontSize: responsive.dp(1.7),
-                        ))
-                  ],
+                  ),
+                  const TextFormFieldWidget(
+                    fillColor: WalletColors.gray,
+                  ),
+                  gapH4,
+                  Container(
+                    margin: const EdgeInsets.only(left: 14),
+                    child: const CustomText(
+                      text: 'email',
+                      fontSize: 16,
+                      color: Colors.black54,
+                    ),
+                  ),
+                  const TextFormFieldWidget(
+                    fillColor: WalletColors.gray,
+                  ),
+                  gapH4,
+                  Container(
+                    margin: const EdgeInsets.only(left: 14),
+                    child: const CustomText(
+                      text: 'Phone',
+                      fontSize: 16,
+                      color: Colors.black54,
+                    ),
+                  ),
+                  const TextFormFieldWidget(
+                    fillColor: WalletColors.gray,
+                  ),
+                  gapH4,
+                  Container(
+                    margin: const EdgeInsets.only(left: 14),
+                    child: const CustomText(
+                      text: 'Password',
+                      fontSize: 16,
+                      color: Colors.black54,
+                    ),
+                  ),
+                  const TextFormFieldWidget(
+                    fillColor: WalletColors.gray,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      CustomText(
+                        text: 'Already a Menber?',
+                        fontSize: responsive.dp(1.4),
+                      ),
+                      TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: CustomText(
+                            text: 'Log In',
+                            fontSize: responsive.dp(1.7),
+                          ))
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              width: responsive.wp(100),
+              height: responsive.hp(6.5),
+              child: CustomButtom(
+                  borderRadius: BorderRadius.circular(50),
+                  child: const CustomText(
+                    text: 'Create',
+                    color: WalletColors.white,
+                    fontWeight: FontWeight.w600,
+                  )),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                TextButton(
+                    onPressed: () {},
+                    child: CustomText(
+                      text: 'Termin Conditions',
+                      fontSize: responsive.dp(1.4),
+                    )),
+                CustomText(
+                  text: 'y',
+                  fontSize: responsive.dp(1.4),
                 ),
+                TextButton(
+                    onPressed: () {},
+                    child: CustomText(
+                      text: 'Politics Privacity',
+                      fontSize: responsive.dp(1.4),
+                    ))
               ],
             ),
-          ),
-          SizedBox(
-            width: responsive.wp(100),
-            height: responsive.hp(6.8),
-            child: CustomButtom(
-                borderRadius: BorderRadius.circular(50),
-                child: const CustomText(
-                  text: 'Create',
-                  color: WalletColors.white,
-                  fontWeight: FontWeight.w600,
-                )),
-          ),
-          gapH4,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextButton(
-                  onPressed: () {},
-                  child: CustomText(
-                    text: 'Termin Conditions',
-                    fontSize: responsive.dp(1.4),
-                  )),
-              CustomText(
-                text: 'y',
-                fontSize: responsive.dp(1.4),
-              ),
-              TextButton(
-                  onPressed: () {},
-                  child: CustomText(
-                    text: 'Politics Privacity',
-                    fontSize: responsive.dp(1.4),
-                  ))
-            ],
-          )
-        ],
+          ],
+        ),
       ),
-    ));
+    );
   }
 }

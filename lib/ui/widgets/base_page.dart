@@ -111,12 +111,11 @@ class _BasePageState extends State<BasePage> {
             ),
             child: FloatingActionButton(
                 onPressed: () {
-                  showDialog(
+                  showModalBottomSheet(
+                      backgroundColor: Colors.transparent,
+                      isScrollControlled: true,
                       context: context,
-                      builder: (context) => const AlertDialog(
-                            backgroundColor: Colors.transparent,
-                            content: CustomRecordModal(),
-                          ));
+                      builder: (context) => const CustomRecordModal());
                 },
                 elevation: 0,
                 highlightElevation: 0,

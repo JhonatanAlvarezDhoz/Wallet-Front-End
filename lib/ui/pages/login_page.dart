@@ -10,7 +10,8 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    const double heigth = 250;
+    final Responsive responsive = Responsive.of(context);
+    double heigth = responsive.hp(29);
     return Scaffold(
         backgroundColor: WalletColors.purple,
         body: Stack(
@@ -19,7 +20,7 @@ class LoginPage extends StatelessWidget {
             Positioned(
               top: 0,
               child: Container(
-                height: 380,
+                height: 350,
                 width: size.width,
                 color: WalletColors.purple,
                 child: Image.asset('assets/images/qrO.png'),
@@ -64,7 +65,7 @@ class LoginPage extends StatelessWidget {
                         fontSize: 40,
                         fontWeight: FontWeight.w600,
                       ),
-                      gapH32,
+                      gapH20,
                       _LoginForm(
                         size: size,
                         heigth: heigth,
